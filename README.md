@@ -9,10 +9,25 @@ go get github.com/zjlsliupei/gin-route
 ```go
 import (
     "github.com/gin-gonic/gin"
-    "github.com/zjlsliupei/gin-route"
+    ginRouter "github.com/zjlsliupei/gin-route"
 )
-g := gin.Default()
-r := g.Group("/admin")
-gin-route.AutoRouter(r, &Test{})
-g.Run(":8083")
+
+type Test struct {
+}
+
+func (t *Test) Hello(ctx *gin.Context) {
+	ctx.JSON(200, gin.H{
+		"success": true,
+	})
+}
+
+func main() {
+    g := gin.Default()
+    r := g.Group("/admin")
+    ginRouter.AutoRouter(r, &Test{})
+    g.Run(":8083")
+}
+
+
+
 
