@@ -26,6 +26,9 @@ func main() {
     r := g.Group("/admin")
     ginRouter.AutoRouter(r, &Test{})
     g.Run(":8083")
+    
+    // curl http://localhost:8083/admin/test/hello
+    // 输出：{"success":true}
 }
 
 
